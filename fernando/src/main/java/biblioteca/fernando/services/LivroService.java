@@ -37,7 +37,7 @@ public class LivroService {
                 .orElseThrow(()-> new RuntimeException("Livro não encontrado"));
     }
     //Delete
-    public void excliurLivro(Long id){
+    public void excluirLivro(Long id){
         livroRepository.deleteById(id);
     }
 }

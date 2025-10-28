@@ -4,7 +4,6 @@ import biblioteca.fernando.model.Livro;
 import biblioteca.fernando.services.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,7 +25,7 @@ public class LivroController {
         return ResponseEntity.ok(livroService.listarLivros());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Livro> buscarPorId(@PathVariable Long id, @RequestBody Livro livro){
+    public ResponseEntity<Livro> buscarPorId(@PathVariable Long id){
         return livroService.buscarPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -40,7 +39,7 @@ public class LivroController {
     //delete
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluirLivro(@PathVariable Long id){
-        livroService.excliurLivro(id);
+        livroService.excluirLivro(id);
         return ResponseEntity.noContent().build();
     }
 
